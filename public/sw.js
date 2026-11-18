@@ -1,8 +1,10 @@
 // Taskdeck service worker. Task data is private, so nothing from /api or any
 // page is cached: only the fingerprinted build files (safe to keep forever)
 // and a static offline page shown when the phone has no connection.
-const CACHE = "taskdeck-v1";
-const OFFLINE = "/offline.html";
+const CACHE = "taskdeck-v2";
+// Cloudflare serves public/offline.html at /offline (/offline.html redirects there,
+// and a redirected response cannot answer a page load).
+const OFFLINE = "/offline";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.add(OFFLINE)).then(() => self.skipWaiting()));

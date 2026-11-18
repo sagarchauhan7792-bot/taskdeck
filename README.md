@@ -25,6 +25,21 @@ npm run dev
 
 Open http://127.0.0.1:5173. The SQL in `drizzle/` is applied to the local database automatically.
 
+## Deploy to Cloudflare
+
+Needs a free Cloudflare account. R2 (voice note storage) asks for a payment method even on the free tier.
+
+```bash
+npx wrangler login
+npx wrangler d1 create taskdeck-db          # put the printed database_id in .openai/hosting.json → cloudflare.d1_id
+npx wrangler r2 bucket create taskdeck-files
+npm run build
+npx wrangler d1 execute taskdeck-db --remote --config dist/server/wrangler.json --file drizzle/0000_ambiguous_wong.sql
+npx wrangler deploy --config dist/server/wrangler.json
+```
+
+Add secrets with `npx wrangler secret put <NAME> --config dist/server/wrangler.json`.
+
 ## Secrets
 
 Each feature switches itself off when its secret is missing. Put them in `.dev.vars` locally (never commit it) and in your host's secret settings in production.

@@ -9,7 +9,11 @@ import { connectorPreview } from "./scripts/vite/connector-preview-plugin.mjs";
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
 
-const { d1, r2 } = hostingConfig;
+const { d1, r2, cloudflare } = hostingConfig;
+// Real Cloudflare names and IDs for deploying. Local preview works with the placeholder ID.
+const d1Name = cloudflare?.d1_name || "site-creator-d1";
+const d1Id = process.env.TASKDECK_D1_ID || cloudflare?.d1_id || SITE_CREATOR_PLACEHOLDER_DATABASE_ID;
+const r2Name = cloudflare?.r2_name || "site-creator-r2";
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
@@ -22,8 +26,8 @@ const localBindingConfig = {
     ? [
         {
           binding: d1,
-          database_name: "site-creator-d1",
-          database_id: SITE_CREATOR_PLACEHOLDER_DATABASE_ID,
+          database_name: d1Name,
+          database_id: d1Id,
         },
       ]
     : [],
@@ -31,7 +35,7 @@ const localBindingConfig = {
     ? [
         {
           binding: r2,
-          bucket_name: "site-creator-r2",
+          bucket_name: r2Name,
         },
       ]
     : [],

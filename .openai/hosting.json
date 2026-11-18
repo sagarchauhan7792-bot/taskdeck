@@ -1,4 +1,9 @@
 {
   "d1": "DB",
-  "r2": "BUCKET"
+  "r2": "BUCKET",
+  "cloudflare": {
+    "d1_name": "taskdeck-db",
+    "d1_id": "",
+    "r2_name": "taskdeck-files"
+  }
 }
