@@ -1,0 +1,165 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "../vendor/shadcn-tailwind-4.13.0.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility scrollbar-gutter-stable {
+  scrollbar-gutter: stable;
+}
+
+:root {
+  --background: #f3f3ee;
+  --foreground: #15161a;
+  --card: #ffffff;
+  --card-foreground: #15161a;
+  --popover: #ffffff;
+  --popover-foreground: #15161a;
+  --primary: #c4f032;
+  --primary-foreground: #12150a;
+  --secondary: #e9e9e2;
+  --secondary-foreground: #15161a;
+  --muted: #e9e9e2;
+  --muted-foreground: #63676f;
+  --accent: #e9e9e2;
+  --accent-foreground: #15161a;
+  --destructive: #d92d20;
+  --border: #dcdcd3;
+  --input: #cfcfc5;
+  --ring: #7c9a12;
+  --radius: 0.75rem;
+  --sidebar: #ecece6;
+  --sidebar-foreground: #15161a;
+  --sidebar-primary: #c4f032;
+  --sidebar-primary-foreground: #12150a;
+  --sidebar-accent: #dfdfd7;
+  --sidebar-accent-foreground: #15161a;
+  --sidebar-border: #dcdcd3;
+  --sidebar-ring: #7c9a12;
+  /* App tokens */
+  --brand-ink: #4f6a00;
+  --overdue: #d92d20;
+  --today: #b25e00;
+  --done: #15803d;
+  --whatsapp: #128c4a;
+  --telegram: #1d8fcf;
+  --slack: #8e3fb8;
+  --chart-1: #4f6a00;
+  --chart-2: #1d8fcf;
+  --chart-3: #8e3fb8;
+  --chart-4: #b25e00;
+  --chart-5: #d92d20;
+}
+
+.dark {
+  --background: #0b0c10;
+  --foreground: #eceef2;
+  --card: #14161c;
+  --card-foreground: #eceef2;
+  --popover: #181a21;
+  --popover-foreground: #eceef2;
+  --primary: #c8f53c;
+  --primary-foreground: #10130a;
+  --secondary: #20232c;
+  --secondary-foreground: #eceef2;
+  --muted: #1c1f27;
+  --muted-foreground: #8d92a1;
+  --accent: #20232c;
+  --accent-foreground: #eceef2;
+  --destructive: #ff6467;
+  --border: #ffffff14;
+  --input: #ffffff24;
+  --ring: #c8f53c99;
+  --sidebar: #0f1015;
+  --sidebar-foreground: #eceef2;
+  --sidebar-primary: #c8f53c;
+  --sidebar-primary-foreground: #10130a;
+  --sidebar-accent: #1c1f27;
+  --sidebar-accent-foreground: #eceef2;
+  --sidebar-border: #ffffff14;
+  --sidebar-ring: #c8f53c99;
+  --brand-ink: #c8f53c;
+  --overdue: #ff6b6b;
+  --today: #ffb547;
+  --done: #4ade80;
+  --whatsapp: #2fd46e;
+  --telegram: #4bb8f2;
+  --slack: #c58af0;
+  --chart-1: #c8f53c;
+  --chart-2: #4bb8f2;
+  --chart-3: #c58af0;
+  --chart-4: #ffb547;
+  --chart-5: #ff6b6b;
+}
+
+@theme inline {
+  --color-brand-ink: var(--brand-ink);
+  --color-overdue: var(--overdue);
+  --color-today: var(--today);
+  --color-done: var(--done);
+  --color-whatsapp: var(--whatsapp);
+  --color-telegram: var(--telegram);
+  --color-slack: var(--slack);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
